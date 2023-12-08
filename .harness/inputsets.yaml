@@ -1,0 +1,13 @@
+inputSet:
+  identifier: "inputsets"
+  name: "inputsets"
+  tags:
+    foo: "bar"
+  orgIdentifier: "default"
+  projectIdentifier: "default_project"
+  pipeline:
+    identifier: "tt"
+    variables:
+    - name: "var3"
+      type: "String"
+      value: "testing"
