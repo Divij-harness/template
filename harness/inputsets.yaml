@@ -1,0 +1,16 @@
+inputSet:
+  name: inputsets
+  tags: {}
+  identifier: inputsets
+  orgIdentifier: default
+  projectIdentifier: default_project
+  pipeline:
+    identifier: tt
+    stages:
+      - stage:
+          identifier: ttstg
+          type: Deployment
+          spec:
+            environment:
+              infrastructureDefinitions:
+                - identifier: inframulti
