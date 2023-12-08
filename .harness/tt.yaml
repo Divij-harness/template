@@ -1,0 +1,55 @@
+pipeline:
+  name: tt
+  identifier: tt
+  projectIdentifier: default_project
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: ttstg
+        identifier: ttstg
+        description: ""
+        type: Deployment
+        spec:
+          deploymentType: Kubernetes
+          service:
+            serviceRef: Dummyservice
+          environment:
+            environmentRef: env1
+            deployToAll: false
+            infrastructureDefinitions: <+input>
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: |-
+                          #!/bin/bash
+
+                          microdnf install -y python3 
+                          microdnf install -y gcc python3-devel libjpeg-turbo-devel zlib-devel 
+                          pip3 install --user requests schedule numpy matplotlib Pillow beautifulsoup4 tabulate 
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+            rollbackSteps: []
+        tags: {}
+        failureStrategies:
+          - onFailure:
+              errors:
+                - AllErrors
+              action:
+                type: StageRollback
+  variables:
+    - name: var1
+      type: String
+      description: ""
+      required: false
+      value: testing
