@@ -1,6 +1,6 @@
 pipeline:
-  name: pipeline125
-  identifier: pipeline125
+  name: tagpp
+  identifier: tagpp
   allowStageExecutions: false
   projectIdentifier: default_project
   orgIdentifier: default
