@@ -3,7 +3,9 @@ pipeline:
   identifier: tagpp
   projectIdentifier: default_project
   orgIdentifier: default
-  tags: {}
+  tags:
+    test_tag: "123"
+    project_id: <+pipeline.variables.id>
   stages:
     - stage:
         name: dep
