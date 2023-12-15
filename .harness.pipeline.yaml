@@ -6,6 +6,7 @@ pipeline:
   tags:
     test_tag: "123"
     project_id: <+pipeline.variables.id>
+    test_tag1: "1234"
   stages:
     - stage:
         name: dep
