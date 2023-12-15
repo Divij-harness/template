@@ -1,0 +1,60 @@
+pipeline:
+  name: pipeline125
+  identifier: pipeline125
+  allowStageExecutions: false
+  projectIdentifier: default_project
+  orgIdentifier: default
+  tags:
+    test_tag: "123"
+    project_id: <+pipeline.variables.id>
+  stages:
+    - stage:
+        name: dep
+        identifier: dep
+        description: ""
+        type: Deployment
+        spec:
+          serviceConfig:
+            serviceRef: Dummyservice
+            serviceDefinition:
+              type: Kubernetes
+              spec: {}
+          infrastructure:
+            environmentRef: en1
+            infrastructureDefinition:
+              type: KubernetesDirect
+              spec:
+                connectorRef: account.tempconnector
+                namespace: harness-delegate-ng
+                releaseName: release-<+INFRA_KEY>
+            allowSimultaneousDeployments: false
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: echo "hii"
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+            rollbackSteps: []
+        tags: {}
+        failureStrategies:
+          - onFailure:
+              errors:
+                - AllErrors
+              action:
+                type: StageRollback
+  variables:
+    - name: id
+      type: String
+      description: ""
+      required: false
+      value: Thisisid
