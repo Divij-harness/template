@@ -13,6 +13,13 @@ pipeline:
           templateRef: filegit
           versionLabel: "1.0"
           templateInputs:
+            type: Deployment
             spec:
+              environment:
+                environmentRef: <+input>
+                environmentInputs: <+input>
+                serviceOverrideInputs: <+input>
+                infrastructureDefinitions: <+input>
               service:
+                serviceRef: <+input>
                 serviceInputs: <+input>
