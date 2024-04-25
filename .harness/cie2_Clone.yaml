@@ -1,0 +1,38 @@
+pipeline:
+  projectIdentifier: default_project
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: orggit
+        build: <+input>
+  stages:
+    - stage:
+        name: stage2
+        identifier: stage2
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: k8con
+              namespace: harness-delegate-ng
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    connectorRef: nwdockerconnector
+                    image: nginx
+                    shell: Sh
+                    command: echo "hii"
+  identifier: cie2_Clone
+  name: cie2 - Clone
