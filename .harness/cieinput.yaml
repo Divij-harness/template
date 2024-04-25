@@ -1,0 +1,14 @@
+inputSet:
+  name: cieinput
+  identifier: cieinput
+  orgIdentifier: default
+  projectIdentifier: default_project
+  pipeline:
+    identifier: cie2_Clone
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
