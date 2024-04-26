@@ -52,4 +52,4 @@ pipeline:
       type: String
       description: ""
       required: false
-      value: testing
+      value: test
