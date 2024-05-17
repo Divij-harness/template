@@ -36,4 +36,4 @@ pipeline:
                     connectorRef: nwdockerconnector
                     image: nginx
                     shell: Sh
-                    command: echo "hii"
+                    command: echo "bye"
