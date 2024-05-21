@@ -19,9 +19,6 @@ template:
                 - name: test
                   type: String
                   value: <+input>
-                - name: testsecret
-                  type: Secret
-                  value: <+input>.allowedValues(account.helmusername,account.helmtest)
     variables:
       - name: path
         type: String
