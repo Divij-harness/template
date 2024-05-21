@@ -22,7 +22,7 @@ template:
                   value: <+input>
                 - name: testsecret
                   type: Secret
-                  value: <+input>.executionInput()
+                  value: <+input>.allowedValues(account.helmusername,account.helmtest)
     variables:
       - name: path
         type: String
