@@ -56,3 +56,13 @@ template:
         description: ""
         required: false
         value: <+input>
+      - name: testsecret
+        type: Secret
+        description: ""
+        required: false
+        value: <+input>
+      - name: test2
+        type: String
+        description: ""
+        required: false
+        value: <+input>
