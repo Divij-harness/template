@@ -7,23 +7,21 @@ template:
   spec:
     stages:
       - stage:
-          name: stage2
-          identifier: stage2
+          name: cstmstg
+          identifier: cstmstg
           tags: {}
           template:
-            templateRef: account.stage12
-            versionLabel: "3.0"
+            templateRef: account.customstgtemp
+            versionLabel: "1.0"
             templateInputs:
-              type: Deployment
-              spec:
-                service:
-                  serviceRef: ""
-                environment:
-                  environmentRef: ""
+              type: Custom
               variables:
                 - name: test
                   type: String
                   value: <+input>
+                - name: testsecret
+                  type: Secret
+                  value: <+input>.allowedValues(account.helmusername,account.helmtest)
     variables:
       - name: path
         type: String
