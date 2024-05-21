@@ -34,4 +34,4 @@ template:
         description: |
           this is a secret
         required: true
-        value: <+input>.executionInput()
+        value: account.helmusername
