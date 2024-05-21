@@ -32,5 +32,5 @@ template:
       - name: testsecret
         type: Secret
         description: ""
-        required: false
-        value: <+input>.allowedValues(account.helmusername,account.helmtest)
+        required: true
+        value: <+input>.executionInput()
