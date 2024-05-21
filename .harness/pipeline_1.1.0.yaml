@@ -13,6 +13,7 @@ template:
           template:
             templateRef: account.customstgtemp
             versionLabel: "1.0"
+            gitBranch: main-patch
             templateInputs:
               type: Custom
               variables:
