@@ -18,7 +18,7 @@ pipeline:
                     value: <+input>
                   - name: testsecret
                     type: Secret
-                    value: <+input>.allowedValues(account.helmusername,account.helmtest)
+                    value: <+input>
       variables:
         - name: path
           type: String
