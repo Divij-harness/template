@@ -1,0 +1,49 @@
+pipeline:
+  name: pipelinetemp
+  identifier: pipelinetemp
+  tags: {}
+  template:
+    templateRef: account.pipeline
+    versionLabel: 1.1.0
+    templateInputs:
+      stages:
+        - stage:
+            identifier: stage1
+            type: Deployment
+            spec:
+              service:
+                serviceRef: harnessguestbook
+                serviceInputs:
+                  serviceDefinition:
+                    type: Kubernetes
+                    spec:
+                      artifacts:
+                        primary:
+                          primaryArtifactRef: arti
+                          sources: ""
+                      variables:
+                        - name: hello
+                          type: String
+                          value: ""
+                        - name: test
+                          type: String
+                          value: ""
+              environment:
+                environmentRef: en1
+                infrastructureDefinitions:
+                  - identifier: infradk
+        - stage:
+            identifier: stage2
+            template:
+              templateInputs:
+                type: Deployment
+                variables:
+                  - name: test
+                    type: String
+                    value: <+input>
+      variables:
+        - name: path
+          type: String
+          value: guestbook/
+  projectIdentifier: default_project
+  orgIdentifier: default
