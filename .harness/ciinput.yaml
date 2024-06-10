@@ -1,0 +1,14 @@
+inputSet:
+  name: ciinput
+  identifier: ciinput
+  orgIdentifier: default
+  projectIdentifier: default_project
+  pipeline:
+    identifier: citriggerpipe
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.sourceBranch>
