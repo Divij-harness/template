@@ -1,0 +1,59 @@
+template:
+  name: stage1
+  identifier: stage1
+  type: Stage
+  tags: {}
+  spec:
+    type: Deployment
+    spec:
+      deploymentType: CustomDeployment
+      customDeploymentRef:
+        templateRef: account.sqdeployment
+        versionLabel: "1.0"
+      service:
+        serviceRef: <+input>
+        serviceInputs: <+input>
+      execution:
+        steps:
+          - step:
+              name: Fetch Instances
+              identifier: fetchInstances
+              type: FetchInstanceScript
+              timeout: 10m
+              spec: {}
+          - step:
+              type: Command
+              name: Command_1
+              identifier: Command_1
+              spec:
+                onDelegate: false
+                environmentVariables: []
+                outputVariables: []
+                commandUnits:
+                  - identifier: s1
+                    name: s1
+                    type: Script
+                    spec:
+                      shell: Bash
+                      source:
+                        type: Inline
+                        spec:
+                          script: |
+                            echo "hii"
+                            echo "bye"
+                            echo "bye"
+              timeout: 10m
+        rollbackSteps: []
+      environmentGroup:
+        envGroupRef: <+input>
+        metadata:
+          parallel: true
+        deployToAll: <+input>
+        environments: <+input>
+    failureStrategies:
+      - onFailure:
+          errors:
+            - AllErrors
+          action:
+            type: StageRollback
+  versionLabel: v3.0

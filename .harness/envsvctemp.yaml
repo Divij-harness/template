@@ -1,0 +1,7 @@
+environment:
+  name: envsvctemp
+  identifier: envsvctemp
+  accountId: j1GnocpKRM-D_WepVV7RGw
+  orgIdentifier: default
+  projectIdentifier: default_project
+  type: PreProduction

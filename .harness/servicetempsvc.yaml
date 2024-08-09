@@ -1,0 +1,5 @@
+service:
+  name: servicetempsvc
+  identifier: servicetempsvc
+  orgIdentifier: default
+  projectIdentifier: default_project

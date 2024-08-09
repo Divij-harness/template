@@ -1,0 +1,51 @@
+template:
+  name: "pipeline "
+  identifier: pipeline
+  versionLabel: 1.1.0
+  type: Pipeline
+  tags: {}
+  spec:
+    stages:
+      - stage:
+          name: cstmstg
+          identifier: cstmstg
+          tags: {}
+          template:
+            templateRef: account.customstgtemp
+            versionLabel: "1.0"
+            gitBranch: main-patch
+            templateInputs:
+              type: Custom
+              variables:
+                - name: test
+                  type: String
+                  value: <+input>
+                - name: testsecret
+                  type: Secret
+                  value: <+input>
+    variables:
+      - name: path
+        type: String
+        description: ""
+        required: false
+        value: <+input>
+    notificationRules:
+      - name: notify
+        identifier: notify
+        pipelineEvents:
+          - type: PipelineFailed
+          - type: StageFailed
+            forStages:
+              - stage1
+          - type: StageSuccess
+            forStages:
+              - stage1
+          - type: PipelineSuccess
+        notificationMethod:
+          type: Email
+          spec:
+            userGroups:
+              - account.divijgrp
+            recipients:
+              - divijkharche01@gmail.com
+        enabled: true

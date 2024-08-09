@@ -1,0 +1,68 @@
+template:
+  name: stage12
+  identifier: stage12
+  versionLabel: "3.0"
+  type: Stage
+  tags: {}
+  spec:
+    type: Deployment
+    spec:
+      deploymentType: Kubernetes
+      execution:
+        steps:
+          - step:
+              type: K8sApply
+              name: K8sApply_1
+              identifier: K8sApply_1
+              spec:
+                skipDryRun: false
+                skipSteadyStateCheck: false
+                skipRendering: false
+                overrides:
+                  - manifest:
+                      identifier: main
+                      type: Values
+                      spec:
+                        store:
+                          type: Github
+                          spec:
+                            connectorRef: account.gitcon
+                            gitFetchType: Branch
+                            paths:
+                              - guestbook
+                            branch: main
+                filePaths:
+                  - guestbook/
+              timeout: 10m
+        rollbackSteps: []
+      service:
+        serviceRef: <+input>
+        serviceInputs: <+input>
+      environment:
+        environmentRef: <+input>
+        deployToAll: false
+        environmentInputs: <+input>
+        serviceOverrideInputs: <+input>
+        infrastructureDefinitions: <+input>
+    failureStrategies:
+      - onFailure:
+          errors:
+            - AllErrors
+          action:
+            type: StageRollback
+    variables:
+      - name: test
+        type: String
+        description: ""
+        required: false
+        value: <+input>
+      - name: testsecret
+        type: Secret
+        description: ""
+        required: false
+        value: <+input>
+      - name: test2
+        type: String
+        description: ""
+        required: false
+        value: <+input>

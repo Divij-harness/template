@@ -1,0 +1,28 @@
+---
+pipeline:
+  tags: {}
+  template:
+    templateRef: "account.pipeline"
+    versionLabel: "1.1.0"
+    templateInputs:
+      stages:
+      - stage:
+          identifier: "cstmstg"
+          template:
+            templateInputs:
+              type: "Custom"
+              variables:
+              - name: "test"
+                type: "String"
+                value: "<+input>"
+              - name: "testsecret"
+                type: "Secret"
+                value: "<+input>"
+      variables:
+      - name: "path"
+        type: "String"
+        value: "guestbook/"
+  projectIdentifier: "default_project"
+  orgIdentifier: "default"
+  identifier: "pipelinetemp_Clone"
+  name: "pipelinetemp - Clone"
