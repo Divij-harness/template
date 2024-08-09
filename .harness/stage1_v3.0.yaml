@@ -38,15 +38,15 @@ template:
                       source:
                         type: Inline
                         spec:
-                          script: |-
+                          script: |
                             echo "hii"
                             echo "bye"
-                            echo "bbh"
               timeout: 10m
         rollbackSteps: []
       environmentGroup:
         envGroupRef: <+input>
-        metadata: {}
+        metadata:
+          parallel: true
         deployToAll: <+input>
         environments: <+input>
     failureStrategies:
