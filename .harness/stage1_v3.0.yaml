@@ -41,6 +41,7 @@ template:
                           script: |
                             echo "hii"
                             echo "bye"
+                            echo "bye"
               timeout: 10m
         rollbackSteps: []
       environmentGroup:
