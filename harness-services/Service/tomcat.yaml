@@ -1,0 +1,17 @@
+kind: Component
+apiVersion: backstage.io/v1alpha1
+metadata:
+  name: tomcat
+  annotations:
+    harness.io/project-url: https://app.harness.io/ng/account/j1GnocpKRM-D_WepVV7RGw/home/orgs/default/projects/default_project/details
+    harness.io/cd-serviceId: tomcat
+    harness.io/services: |
+      tomcat: https://app.harness.io/ng/account/j1GnocpKRM-D_WepVV7RGw/cd/orgs/default/projects/default_project/services/tomcat
+  title: tomcat
+  tags: []
+spec:
+  type: Service
+  lifecycle: Unknown
+  owner: Unknown
+  domain: default
+  system: default_project
