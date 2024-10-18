@@ -1,0 +1,14 @@
+inputSet:
+  name: PR_check
+  identifier: PR_check
+  orgIdentifier: nglabs
+  projectIdentifier: CSETest1
+  pipeline:
+    identifier: divijrepropipeline
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: develop
