@@ -6,7 +6,7 @@ inputSet:
   orgIdentifier: "default"
   projectIdentifier: "default_project"
   pipeline:
-    identifier: "ttpipeline"
+    identifier: "ttpipelineisverygood"
     variables:
     - name: "var3"
       type: "String"
