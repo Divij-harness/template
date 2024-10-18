@@ -8,6 +8,6 @@ inputSet:
   pipeline:
     identifier: "ttpipelineisverygood"
     variables:
-    - name: "var3"
+    - name: "var4"
       type: "String"
       value: "testing"
