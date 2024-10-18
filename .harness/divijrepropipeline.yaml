@@ -1,0 +1,40 @@
+pipeline:
+  name: divij-repro-pipeline
+  identifier: divijrepropipeline
+  projectIdentifier: CSETest1
+  orgIdentifier: nglabs
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: account.divijgithubconn
+        build: <+input>
+  stages:
+    - stage:
+        name: buildstage
+        identifier: buildstage
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          caching:
+            enabled: true
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: account.testankit
+              namespace: harness-delegate-ng
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    connectorRef: account.harness_lab_docker
+                    image: nginx
+                    shell: Sh
+                    command: echo "hii"
